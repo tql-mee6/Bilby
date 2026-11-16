@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Интерактивный лендинг, посвященный короткометражному мультфильму BILBY от DreamWorks.">
+    <title>BILBY | Интерактивная история выживания</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+</head>
+<body>
+
+    <!-- Прогресс-бар, зерно плёнки, частицы пыли -->
+    <div class="progress-bar" id="progress-bar"></div>
+    <div class="grain"></div>
+    <canvas id="dust-canvas"></canvas>
+
+    <!-- НАВИГАЦИЯ -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">BILBY<span class="logo-dot">.</span></a>
+
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link">О мультфильме</a></li>
+                    <li><a href="#plot-start" class="nav-link">Начало</a></li>
+                    <li><a href="#plot-climax" class="nav-link">Завязка</a></li>
+                    <li><a href="#plot-end" class="nav-link">Конец</a></li>
+                    <li><a href="#movie" class="nav-link">Видео</a></li>
+                    <li><a href="#characters" class="nav-link">Герои</a></li>
+                    <li><a href="#opinion" class="nav-link">Мнение</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#about">О мультфильме</a></li>
+            <li><a href="#plot-start">Начало</a></li>
+            <li><a href="#plot-climax">Завязка</a></li>
+            <li><a href="#plot-end">Конец</a></li>
+            <li><a href="#movie">Видео</a></li>
+            <li><a href="#characters">Герои</a></li>
+            <li><a href="#opinion">Мнение</a></li>
+        </ul>
+    </div>
+
+    <!-- 1. HERO -->
+    <section id="hero" class="section hero">
+        <div class="hero-bg-layer" id="hero-bg-layer"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge reveal-hero">DreamWorks Animation</div>
+            <h1 class="hero-title" data-text="BILBY">BILBY</h1>
+            <p class="hero-subtitle">История о выживании, дружбе и любви</p>
+
+            <div class="hero-buttons">
+                <a href="#movie" class="btn btn-primary">Смотреть мультфильм</a>
+                <a href="#about" class="btn btn-outline">Узнать больше</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="8">0</span>
+                    <span class="stat-label">Минут</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2018">0</span>
+                    <span class="stat-label">Год</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1">0</span>
+                    <span class="stat-label">Оскар</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">Листайте вниз</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бегущая строка (наклонная лента) -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Выживание</span><span>✦</span><span>Дружба</span><span>✦</span><span>Любовь</span><span>✦</span>
+            <span>Выживание</span><span>✦</span><span>Дружба</span><span>✦</span><span>Любовь</span><span>✦</span>
+            <span>Выживание</span><span>✦</span><span>Дружба</span><span>✦</span><span>Любовь</span><span>✦</span>
+        </div>
+    </div>
+
+    <!-- 2. О МУЛЬТФИЛЬМЕ -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">01 / О мультфильме</span>
+                <h2 class="section-title">Маленький герой <br>большой пустыни</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p class="lead-text">«Билби» — короткометражный анимационный фильм 2018 года от студии <strong>DreamWorks Animation</strong>.</p>
+                    <p>История рассказывает о билби по имени Перри и птенце альбатроса, которые пытаются выжить в суровой австралийской пустыне. Это трогательная история о том, как эгоистичный одиночка становится заботливым отцом.</p>
+                    <p>Мультфильм полон контрастов: от смешных моментов до душераздирающих сцен. Анимация выполнена в лучших традициях студии, с потрясающей детализацией шерсти и пейзажей.</p>
+
+                    <div class="awards-list">
+                        <div class="award-item">
+                            <span class="award-icon">🏆</span>
+                            <div>
+                                <h4>Оскар 2019</h4>
+                                <p>Номинация на лучший анимационный короткометражный фильм</p>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <span class="award-icon">🏆</span>
+                            <div>
+                                <h4>Энни 2019</h4>
+                                <p>Победа в категории «Лучшая анимация персонажей»</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-visuals reveal">
+                    <div class="poster-card">
+                        <div class="poster-img">
+                            <img src="img/poster.jpg" alt="Постер мультфильма BILBY">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. СЮЖЕТ: НАЧАЛО -->
+    <section id="plot-start" class="section plot-section start-section">
+        <div class="container plot-container">
+            <div class="plot-badge reveal">Начало</div>
+            <div class="plot-number-bg">01</div>
+            <div class="plot-content-wrapper reveal">
+                <h2 class="plot-title">Рутина и одиночество</h2>
+                <p class="plot-desc">Билби живет один, каждый день борясь за выживание в пустыне. Его жизнь полна опасностей, но он справляется. Он не ждет ни от кого помощи и привык полагаться только на себя.</p>
+                <div class="plot-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. СЮЖЕТ: ЗАВЯЗКА -->
+    <section id="plot-climax" class="section plot-section climax-section">
+        <div class="container plot-container">
+            <div class="plot-badge reveal">Завязка</div>
+            <div class="plot-number-bg">02</div>
+            <div class="plot-content-wrapper reveal">
+                <h2 class="plot-title">Неожиданная находка</h2>
+                <p class="plot-desc">Он находит беспомощного птенца альбатроса. С этого момента его жизнь меняется. Теперь он должен защищать не только себя, но и малыша. Опасности подстерегают на каждом шагу.</p>
+                <div class="plot-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. СЮЖЕТ: КОНЕЦ -->
+    <section id="plot-end" class="section plot-section end-section">
+        <div class="container plot-container">
+            <div class="plot-badge reveal">Конец</div>
+            <div class="plot-number-bg">03</div>
+            <div class="plot-content-wrapper reveal">
+                <h2 class="plot-title">Надежда и новая жизнь</h2>
+                <p class="plot-desc">Несмотря на все трудности, они выживают. Билби понимает, что теперь он не один. Пустыня больше не кажется такой враждебной. Теперь у него есть смысл жить дальше.</p>
+                <div class="plot-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. МУЛЬТФИЛЬМ -->
+    <section id="movie" class="section movie">
+        <div class="container">
+            <div class="section-header center reveal">
+                <span class="section-subtitle">04 / Видео</span>
+                <h2 class="section-title">Смотрим мультфильм</h2>
+            </div>
+
+            <div class="video-wrapper reveal">
+                <div class="video-container">
+                    <video controls preload="metadata" id="main-video">
+                        <source src="5018784631527.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <p>Нажмите Play, чтобы окунуться в историю. Убедитесь, что у вас включен звук.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ПЕРСОНАЖИ -->
+    <section id="characters" class="section characters">
+        <div class="container">
+            <div class="section-header center reveal">
+                <span class="section-subtitle">05 / Персонажи</span>
+                <h2 class="section-title">Герои пустыни</h2>
+            </div>
+
+            <div class="character-grid">
+                <div class="char-card reveal">
+                    <div class="char-img-wrapper">
+                        <img src="img/perry.jpg" alt="Перри — билби">
+                    </div>
+                    <div class="char-info">
+                        <h3>Перри</h3>
+                        <p>Главный герой, смелый и заботливый. Его жизнь меняется, когда он встречает птенца.</p>
+                    </div>
+                </div>
+
+                <div class="char-card reveal">
+                    <div class="char-img-wrapper">
+                        <img src="img/ptenec.jpg" alt="Птенец альбатроса">
+                    </div>
+                    <div class="char-info">
+                        <h3>Птенец</h3>
+                        <p>Маленький альбатрос, но очень храбрый. Он становится для Билби не просто обузой, а настоящим другом.</p>
+                    </div>
+                </div>
+
+                <div class="char-card reveal">
+                    <div class="char-img-wrapper">
+                        <img src="img/dingo.jpg" alt="Динго">
+                    </div>
+                    <div class="char-info">
+                        <h3>Динго</h3>
+                        <p>Опасный хищник, символ угрозы пустыни. Не дает героям расслабиться ни на минуту.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. МНЕНИЕ -->
+    <section id="opinion" class="section opinion">
+        <div class="container">
+            <div class="section-header center reveal">
+                <span class="section-subtitle">06 / Рефлексия</span>
+                <h2 class="section-title">Моё мнение</h2>
+                <p class="section-desc">Вы можете не согласиться с автором сайта. Нажмите кнопку ниже, чтобы написать своё мнение. Оно сохранится в вашем браузере.</p>
+            </div>
+
+            <div class="opinion-card reveal">
+                <div class="opinion-image">
+                    <img src="img/bilby-moment.png" alt="Билби и птенец — трогательный момент">
+                </div>
+
+                <div class="opinion-content">
+                    <div class="opinion-quote-mark">“</div>
+
+                    <div id="user-opinion-text" class="opinion-text" contenteditable="false">Главная мысль мультфильма — это безусловная любовь и жертвенность. Билби, несмотря на свой страх и эгоизм, становится настоящим отцом для чужого птенца альбатроса. Это история о том, что даже в самых суровых условиях можно найти тепло и смысл жизни.</div>
+
+                    <div class="opinion-controls">
+                        <button id="edit-btn" class="btn btn-primary">✎ Написать своё мнение</button>
+                        <button id="save-btn" class="btn btn-success hidden">💾 Сохранить</button>
+                        <button id="reset-btn" class="btn btn-ghost hidden">↺ Сбросить</button>
+                    </div>
+                    <div class="save-status" id="save-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. СОЗДАНИЕ И АВТОРЫ -->
+    <section id="creation" class="section creation">
+        <div class="container">
+            <div class="section-header center reveal">
+                <span class="section-subtitle">07 / Создание</span>
+                <h2 class="section-title">Люди, создавшие чудо</h2>
+            </div>
+
+            <div class="authors-grid">
+                <div class="author reveal">
+                    <div class="author-img-wrapper">
+                        <img src="img/pier.jpeg" alt="Пьер Перифель">
+                    </div>
+                    <h3>Пьер Перифель</h3>
+                    <p class="author-role">Режиссёр</p>
+                    <p class="author-bio">Французский аниматор и режиссёр, известный своей работой над «Кунг-фу Пандой» и «Билби».</p>
+                </div>
+
+                <div class="author reveal">
+                    <div class="author-img-wrapper">
+                        <img src="img/jay.jpg" alt="Джей Пи Санс">
+                    </div>
+                    <h3>Джей Пи Санс</h3>
+                    <p class="author-role">Режиссёр</p>
+                    <p class="author-bio">Аниматор DreamWorks Animation, для которого «Билби» стал режиссёрским дебютом.</p>
+                </div>
+
+                <div class="author reveal">
+                    <div class="author-img-wrapper">
+                        <img src="img/liron.jpg" alt="Лирон Топаз">
+                    </div>
+                    <h3>Лирон Топаз</h3>
+                    <p class="author-role">Режиссёр</p>
+                    <p class="author-bio">Аниматор DreamWorks Animation, соавтор короткометражки «Билби».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">BILBY<span class="logo-dot">.</span></div>
+                <p class="footer-text">Интерактивный лендинг, созданный с любовью к мультфильму BILBY.</p>
+                <p class="footer-text small">&copy; 2024. Все права на мультфильм принадлежат DreamWorks Animation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
